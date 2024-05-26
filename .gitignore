@@ -7,7 +7,7 @@
 /src/Source.Server.Infrastructure/obj
 /src/Source.Server.WebAPI/bin
 /src/Source.Server.WebAPI/logs
-/src/Source.Server.WebAPI
+/src/Source.Server.WebAPI/obj
 /src/Source.Shared/bin
 /src/Source.Shared/obj
 /src/WebApp.Application/bin
