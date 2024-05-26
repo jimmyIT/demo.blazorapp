@@ -1,0 +1,24 @@
+﻿@using System.Net.Http
+@using System.Net.Http.Json
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
+@using Microsoft.AspNetCore.Components.Web
+@using static Microsoft.AspNetCore.Components.Web.RenderMode
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+@using Microsoft.JSInterop
+@using Microsoft.AspNetCore.Components.Authorization
+@using MudBlazor
+@using WebApp
+@using WebApp.Application.Common.Constants
+@using WebApp.Application.Common.Services.AuthenState
+@using WebApp.Components
+@using WebApp.Components.Layout
+@using WebApp.Components.Pages
+@inject AuthenticationStateProvider _authenStateProvider
+@inject NavigationManager _navigateManager
+@inject ProtectedSessionStorage _protectedSessionStore
+@inject ProtectedLocalStorage _protectedLocalStorage
+@inject IDialogService _dialogService
+@inject IAuthenticationService _authenticationSvc

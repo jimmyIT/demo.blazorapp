@@ -1,0 +1,9 @@
+﻿@code {
+    [Parameter] public string Route { get; set; } = RouteConst.Default;
+    protected override Task OnInitializedAsync()
+    {
+        _navigateManager.NavigateTo(Route);
+
+        return base.OnInitializedAsync();
+    }
+}

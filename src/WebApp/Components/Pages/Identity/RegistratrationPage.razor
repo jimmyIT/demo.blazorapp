@@ -1,0 +1,49 @@
+﻿<PageTitle>
+    @PageConst.Title.Register
+</PageTitle>
+
+<MudPaper Height="100%" Class="d-flex align-center justify-center mud-width-full py-8">
+    <MudContainer MaxWidth="MaxWidth.Small">
+        <MudCard>
+            <MudCardHeader>
+                <CardHeaderContent>
+                    <MudText Typo="Typo.h4">Registration Details</MudText>
+                </CardHeaderContent>
+            </MudCardHeader>
+            <MudCardContent>
+                <!---->
+                <!---->
+                <MudForm @ref="@_form"
+                         Model="@_registrationDetailsModel"
+                         Validation="@(_registrationModelValidator.ValidateValue)"
+                         ValidationDelay="0">
+                    <!---->
+                    <!---->
+                    <MudTextField @bind-Value="_registrationDetailsModel.EmailAddress"
+                                  For="@(() => _registrationDetailsModel.EmailAddress)"
+                                  Immediate="true"
+                                  Label="Email Address" />
+                    <!---->
+                    <!---->
+                    <MudTextField @bind-Value="_registrationDetailsModel.Password"
+                                  For="@(() => _registrationDetailsModel.Password)"
+                                  Immediate="true"
+                                  InputType="@_passwordInputType"
+                                  Adornment="Adornment.End"
+                                  AdornmentIcon="@_passwordInputIcon"
+                                  OnAdornmentClick=@PasswordEye_click
+                                  AdornmentAriaLabel="Show Password"
+                                  Label="Password" />
+                    <!---->
+                    <!---->
+                </MudForm>
+                <!---->
+                <!---->
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="() => _navigateManager.NavigateTo(RouteConst.Identity.SignIn)">Cancel</MudButton>
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Register</MudButton>
+            </MudCardActions>
+        </MudCard>
+    </MudContainer>
+</MudPaper>

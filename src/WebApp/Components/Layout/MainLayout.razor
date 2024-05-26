@@ -1,0 +1,40 @@
+﻿@inherits LayoutComponentBase
+
+<MudLayout>
+    <MudAppBar>
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />        
+        <MudSpacer />
+        <MudMenu ActivationEvent="@MouseEvent.LeftClick">
+            <ActivatorContent>
+                <MudAvatar>
+                    <ChildContent>
+                        <MudImage Src="images/avatar.jpg" Alt="Jimmy" ></MudImage>
+                    </ChildContent>
+                </MudAvatar>                
+            </ActivatorContent>
+            <ChildContent>
+                <MudMenuItem>Profile</MudMenuItem>
+                <MudMenuItem>Theme</MudMenuItem>
+                <MudMenuItem>Usage</MudMenuItem>
+                <MudMenuItem OnClick=@SignOutOnClick>Sign Out</MudMenuItem>
+            </ChildContent>
+        </MudMenu>
+    </MudAppBar>
+    <MudDrawer @bind-Open=@_drawerOpen>
+        <NavMenu></NavMenu>
+    </MudDrawer>
+    <MudMainContent>
+        <AuthorizeView>
+            <Authorized>
+                @Body
+            </Authorized>
+            <NotAuthorized>
+                <NavigatorComponent Route=@_unAuthorisedPage></NavigatorComponent>
+            </NotAuthorized>
+        </AuthorizeView>
+    </MudMainContent>
+</MudLayout>
+
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
