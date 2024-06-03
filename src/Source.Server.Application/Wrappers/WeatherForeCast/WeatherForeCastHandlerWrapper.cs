@@ -2,7 +2,7 @@
 using Source.EF.Repositories;
 using Source.Server.Application.Handlers;
 using Source.Server.Application.Handlers.WeatherForeCast.Get;
-using Source.Server.Application.Services.Errors.GetByCode;
+using Source.Server.Application.Services.Internal.Errors.GetByCode;
 
 namespace Source.Server.Application.Wrappers.WeatherForeCast;
 

@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using Source.EF.Repositories;
-using Source.Server.Application.Services.Errors.GetByCode;
-using Source.Server.Application.Services.Token.GenerateAccessToken;
-using Source.Server.Application.Services.Token.GetPrincipalFromExpiredToken;
+using Source.Server.Application.Services.Internal.Errors.GetByCode;
+using Source.Server.Application.Services.Internal.Token.GenerateAccessToken;
+using Source.Server.Application.Services.Internal.Token.GetPrincipalFromExpiredToken;
 using Source.Shared.Models;
 using Source.Shared.Wrapper;
 

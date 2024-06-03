@@ -7,8 +7,9 @@ using Source.Server.Application.Common.Extension.Wrapper;
 using Source.Server.Application.Common.Provider;
 using Source.Server.Application.Handlers;
 using Source.Server.Application.Handlers.UserProfiles.Create;
-using Source.Server.Application.Services.ApplicationParameters.GetValueByKey;
-using Source.Server.Application.Services.Errors.GetByCode;
+using Source.Server.Application.Services.Internal.ApplicationParameters.GetValueByKey;
+using Source.Server.Application.Services.Internal.Errors.GetByCode;
+using Source.Shared.Providers;
 using Source.Shared.Wrapper;
 
 namespace Source.Server.Aplication.Handlers.UserProfiles.Create;

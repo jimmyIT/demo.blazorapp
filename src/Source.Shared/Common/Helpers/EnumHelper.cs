@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Source.Shared.Common.Helpers;
+﻿namespace Source.Shared.Common.Helpers;
 
 public static class EnumHelper
 {

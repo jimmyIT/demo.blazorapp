@@ -2,7 +2,7 @@
 using Source.EF.Entities.User;
 using Source.EF.Repositories;
 using Source.Server.Application.Common.Provider;
-using Source.Server.Application.Services.Errors.GetByCode;
+using Source.Server.Application.Services.Internal.Errors.GetByCode;
 using Source.Shared.Wrapper;
 
 namespace Source.Server.Application.Handlers.UserProfiles.GenerateCode;

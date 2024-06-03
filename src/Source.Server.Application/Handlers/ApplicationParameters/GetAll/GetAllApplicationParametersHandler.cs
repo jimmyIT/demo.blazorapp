@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Source.EF.Entities.Parameters;
 using Source.EF.Repositories;
-using Source.Server.Application.Services.Errors.GetByCode;
+using Source.Server.Application.Services.Internal.Errors.GetByCode;
 using Source.Shared.Wrapper;
 
 namespace Source.Server.Application.Handlers.ApplicationParameters.GetAll;
@@ -32,7 +32,6 @@ public class GetAllApplicationParametersHandler(
 
             response.Parameters = keyValuePairs;
         }
-
 
         return await WrapperResult<GetAllApplicationParametersResponse>.SuccessAsync(response);
     }
