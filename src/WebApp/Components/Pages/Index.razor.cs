@@ -9,7 +9,7 @@ namespace WebApp.Components.Pages;
 [Route(RouteConst.Default)]
 public partial class Index
 {
-    [Inject] IAuthenticatedUserService _authenticatedUserSvc { get; set; } = default!;
+    [Inject] IUserStateActionService _authenticatedUserSvc { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
     {

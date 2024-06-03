@@ -11,11 +11,11 @@ public class TrackingCircuitHandler : CircuitHandler
 {
     private readonly ProtectedLocalStorage _protectedLocalStorage;
     private readonly IAuthenticationService _authenticationSvc;
-    private readonly IAuthenticatedUserService _authenticatedUserSvc;
+    private readonly IUserStateActionService _authenticatedUserSvc;
     public TrackingCircuitHandler(
         ProtectedLocalStorage protectedLocalStorage,
         IAuthenticationService authenticationService,
-        IAuthenticatedUserService authenticatedUserSvc)
+        IUserStateActionService authenticatedUserSvc)
     {
         _protectedLocalStorage = protectedLocalStorage;
         _authenticationSvc = authenticationService;

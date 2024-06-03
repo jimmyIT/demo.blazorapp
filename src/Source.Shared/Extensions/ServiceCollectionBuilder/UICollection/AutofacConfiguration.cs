@@ -13,7 +13,6 @@ public static class AutofacConfiguration
         builder.ConfigureContainer<ContainerBuilder>(containerBuilder =>
         {
             containerBuilder.RegisterAssemblyTypes(
-                    Assembly.Load("WebApp.Application"),
                     Assembly.Load("Source.Shared"))
                 .AsImplementedInterfaces()
                 .InstancePerDependency();

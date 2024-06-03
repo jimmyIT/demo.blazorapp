@@ -8,7 +8,7 @@ public partial class MainLayout
 {
     private string _unAuthorisedPage = RouteConst.Identity.UnAuthorised;
 
-    [Inject] IAuthenticatedUserService _authenticatedUserService { get; set; } = default!; 
+    [Inject] IUserStateActionService _authenticatedUserService { get; set; } = default!; 
 
     bool _drawerOpen = true;
 

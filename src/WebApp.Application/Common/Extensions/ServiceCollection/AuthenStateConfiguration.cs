@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Components.Authorization;
+﻿using Autofac;
+using Autofac.Util;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System.Reflection;
 using WebApp.Application.Common.Providers.AuthenState;
 using WebApp.Application.Common.Services.AuthenState;
 
@@ -15,8 +19,8 @@ public static class AuthenStateConfiguration
     public static void AddAuthenStateConfig(this IServiceCollection services)
     {
         services.AddCascadingAuthenticationState();
-        services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
         services.AddScoped<IAuthenticationService, AuthenticationService>();
-        services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
+        services.AddScoped<IUserStateActionService, UserStateActionService>();
+        services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
     }
 }

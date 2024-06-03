@@ -25,4 +25,7 @@ public class CustomAuthStateProvider : AuthenticationStateProvider
 
     public override Task<AuthenticationState> GetAuthenticationStateAsync()
         => Task.FromResult(_authenticationState);
+
+    public void NotifyAuthenticationStateChanged()
+        => NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
 }

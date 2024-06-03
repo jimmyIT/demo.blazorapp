@@ -2,21 +2,22 @@
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using System.Security.Claims;
 using WebApp.Application.Common.Constants;
+using WebApp.Application.Common.Providers.AuthenState;
 
 namespace WebApp.Application.Common.Services.AuthenState;
-public interface IAuthenticatedUserService
+public interface IUserStateActionService
 {
     Task<bool> IsAuthenticated();
     Task SignInAsync();
     Task SignOutAsync();
 }
 
-public class AuthenticatedUserService : IAuthenticatedUserService
+public class UserStateActionService : IUserStateActionService
 {
     private readonly AuthenticationStateProvider _authenticationStateProvider;
     private readonly IAuthenticationService _authenticationSvc;
     private readonly ProtectedLocalStorage _protectedLocalStorage;
-    public AuthenticatedUserService(
+    public UserStateActionService(
         AuthenticationStateProvider authenticationStateProvider,
         IAuthenticationService authenticationService,
         ProtectedLocalStorage protectedLocalStorage)

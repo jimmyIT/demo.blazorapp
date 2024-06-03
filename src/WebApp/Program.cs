@@ -13,16 +13,16 @@ var builder = WebApplication.CreateBuilder(args);
 IConfiguration configuration = builder.Configuration;
 
 // Add services to the container.
-builder.Services.AddScopedProcessors();
-builder.Host.AddAutofacConfiguration();
 builder.Services.AddAuthenStateConfig();
+builder.Services.AddContainerBuilderConfiguration(builder.Host);
+builder.Host.AddAutofacConfiguration();
+builder.Services.AddAuthentication();
+builder.Services.AddAuthorizationCore();
 builder.Services.AddAPIServiceConfiguration(configuration);
 builder.Services.AddMudServices();
 builder.Services.AddSingleton<IAuthorizationMiddlewareResultHandler, BlazorAuthorizationMiddlewareResultHandler>();
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
-builder.Services.AddAuthentication();
-builder.Services.AddAuthorizationCore();
 builder.Services.TryAddEnumerable(ServiceDescriptor.Scoped<CircuitHandler, TrackingCircuitHandler>());
 
 var app = builder.Build();

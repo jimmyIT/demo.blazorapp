@@ -15,7 +15,7 @@ namespace WebApp.Components.Pages.Identity;
 public partial class SignInPage
 {
     [Inject] ISignInProcessor _signinProcessor { get; set; } = default!;
-    [Inject] IAuthenticatedUserService _authenticatedUserSvc { get; set; } = default!;
+    [Inject] IUserStateActionService _authenticatedUserSvc { get; set; } = default!;
 
     private MudForm _form = default!;
     private SignInModelValidator _signinModelValidator = new();
