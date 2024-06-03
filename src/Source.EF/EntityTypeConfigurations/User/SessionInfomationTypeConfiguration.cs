@@ -8,15 +8,19 @@ public class SessionInfomationTypeConfiguration : IEntityTypeConfiguration<Sessi
 {
     public void Configure(EntityTypeBuilder<SessionInfomationEntity> builder)
     {
+        builder.HasKey(u => u.Id);
         builder.HasIndex(u => u.Id).IsUnique();
         builder.Property(e => e.Id)
                .ValueGeneratedOnAdd();
 
-        builder.HasKey(u => u.Code);
         builder.HasIndex(u => u.Code).IsUnique();
         builder.Property(e => e.Code)
                .HasMaxLength(100)
-               .IsUnicode(true)
+               .IsRequired();
+
+        builder.HasIndex(u => u.RefreshToken).IsUnique();
+        builder.Property(e => e.RefreshToken)
+               .HasMaxLength(250)
                .IsRequired();
 
         builder.Property(e => e.CreatedOn)

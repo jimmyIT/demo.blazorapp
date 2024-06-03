@@ -9,15 +9,14 @@ public class UserProfileTypeConfiguration : IEntityTypeConfiguration<UserProfile
 {
     public void Configure(EntityTypeBuilder<UserProfileEntity> builder)
     {
+        builder.HasKey(u => u.Id);
         builder.HasIndex(u => u.Id).IsUnique();
         builder.Property(e => e.Id)
                .ValueGeneratedOnAdd();
 
-        builder.HasKey(u => u.Code);
         builder.HasIndex(u => u.Code).IsUnique();
         builder.Property(e => e.Code)
                .HasMaxLength(100)
-               .IsUnicode(true)
                .IsRequired();
 
         builder.Property(e => e.CreatedOn)
@@ -35,7 +34,7 @@ public class UserProfileTypeConfiguration : IEntityTypeConfiguration<UserProfile
 
         builder.HasMany(g => g.SessionInfomations)
                .WithOne(s => s.UserProfile)
-               .HasForeignKey(s => s.UserCode)
+               .HasForeignKey(s => s.UserId)
                .OnDelete(DeleteBehavior.Cascade);
     }
 }

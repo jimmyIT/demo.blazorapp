@@ -16,34 +16,29 @@ public class GenerateAccessTokenService(
 {
     public async Task<WrapperResult<string>> DoActionAsync(GenerateAccessTokenModel generateAccessToken)
     {
-        TimeSpan tokenExpiration = TimeSpan.FromSeconds(generateAccessToken.JwtOptions.ExpirationSeconds);
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var key = Encoding.ASCII.GetBytes(generateAccessToken.JwtOptions.SigningKey);
 
-        byte[] keyBytes = Encoding.UTF8.GetBytes(generateAccessToken.JwtOptions.SigningKey);
-        SymmetricSecurityKey symmetricKey = new(keyBytes);
+        var tokenDescriptor = new SecurityTokenDescriptor
+        {
+            Subject = new ClaimsIdentity(
+                new[] {
+                    new Claim("sub", generateAccessToken.IdentityCode),
+                    new Claim("name", generateAccessToken.UserName),
+                    new Claim("aud", generateAccessToken.JwtOptions.Audience)
+                }),
+            Expires = DateTime.UtcNow.AddSeconds(generateAccessToken.JwtOptions.ExpirationSeconds), // Token expiration time
+            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+        };
 
-        SigningCredentials signingCredentials = new(
-            symmetricKey,
-            // 👇 one of the most popular.
-            SecurityAlgorithms.HmacSha256);
-
+        var token = tokenHandler.CreateToken(tokenDescriptor);
+                
         var claims = new List<Claim>()
         {
             new Claim("sub", generateAccessToken.IdentityCode),
             new Claim("name", generateAccessToken.UserName),
             new Claim("aud", generateAccessToken.JwtOptions.Audience)
         };
-
-        var permissions = new[] { "read_todo", "create_todo" };
-        var roleClaims = permissions.Select(x => new Claim("role", x));
-
-        claims.AddRange(roleClaims);
-
-        var token = new JwtSecurityToken(
-            issuer: generateAccessToken.JwtOptions.Issuer,
-            audience: generateAccessToken.JwtOptions.Audience,
-            claims: claims,
-            expires: DateTime.Now.Add(tokenExpiration),
-            signingCredentials: signingCredentials);
 
         return await WrapperResult<string>.SuccessAsync(new JwtSecurityTokenHandler().WriteToken(token));
     }

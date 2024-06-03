@@ -30,7 +30,6 @@ public class GenerateAccessTokenHandler(
     public async Task<WrapperResult<GenerateAccessTokenResponse>> DoActionAsync(GenerateAccessTokenRequest request)
     {
         // TODO: Validate Request
-
         TimeSpan tokenExpiration = TimeSpan.FromSeconds(_jwtOptions.ExpirationSeconds);
         string identityUserCode = string.Empty;
 
